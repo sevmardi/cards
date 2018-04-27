@@ -1,2 +1,3 @@
-# cards
-GO project playground
+# Cards
+
+GoLang personal project playground

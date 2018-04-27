@@ -3,17 +3,19 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"math/rand"
 	"os"
 	"strings"
+	"time"
 )
 
 type deck []string
 
 func newDeck() deck {
-	cards := deck{"Ace of spades", "two of spades"}
+	cards := deck{"Ace of Spades", "Two of Spades"}
 
-	cardSuits := []string{"Spades", "Dimonds", "Hearts"}
-	cardValues := []string{"Ace", "two", "three", "Four"}
+	cardSuits := []string{"Spades", "Dimonds", "Hearts", "Clubs"}
+	cardValues := []string{"Ace", "Two", "Three", "Four"}
 
 	for _, suit := range cardSuits {
 		for _, value := range cardValues {
@@ -54,4 +56,17 @@ func newDeckFromFile(filename string) deck {
 
 	return deck(s)
 
+}
+
+func (d deck) shuffle() {
+	source := rand.NewSource(time.Now().UnixNano())
+	r := rand.New(source)
+
+	for i := range d {
+		// new_post := rand.Intn(len(d) - 1)
+		new_post := r.Intn(len(d) - 1)
+
+		d[i], d[new_post] = d[new_post], d[i]
+
+	}
 }

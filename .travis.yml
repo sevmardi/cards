@@ -1,9 +1,7 @@
 language: go
-python:
-  - "1.10"
-# 
-env:
-  - DJANGO_VERSION=2.1
-# script
-script:
-  - python3 manage.py test
+
+go:
+  - "1.x"
+  - "1.8"
+  - "1.10.x"
+  - master
